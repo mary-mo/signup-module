@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 import Button from './Button';
 import DateField from './DateField';
 import GenderSelect from './GenderSelect';
@@ -9,22 +8,21 @@ import Dropdown from './Dropdown';
 import { nextStep, updateUser, previousStep } from '../actions';
 
 class StepTwo extends Component {
-
   state = {
     dataError: null,
     gender: 'male',
     from: '',
-  }
+  };
 
-  handleGenderChange = (gender) =>{
-    this.setState({ gender })
-  }
+  handleGenderChange = gender => {
+    this.setState({ gender });
+  };
 
-  handleFromChange = (e) => {
+  handleFromChange = e => {
     this.setState({
       from: e.target.value,
-    })
-  }
+    });
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -36,45 +34,45 @@ class StepTwo extends Component {
     const mm = +elements[1].value;
     const yyyy = +elements[2].value;
 
-    const ddValid = dd >= 1 && dd <=31;
-    const mmValid = mm >= 1 && mm<=12;
+    const ddValid = dd >= 1 && dd <= 31;
+    const mmValid = mm >= 1 && mm <= 12;
     const yyyyValid = !isNaN(yyyy) && yyyy > 1899 && yyyy < 10000;
 
-    const date = new Date(yyyy, mm-1, dd);
+    const date = new Date(yyyy, mm - 1, dd);
     const day = date.getDate();
-    const month = date.getMonth()+1;
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
     const dateValid = day === dd && month === mm && year === yyyy;
 
     this.setState({
-      dataError: (ddValid && mmValid && yyyyValid && dateValid) ? null : 'Invalid date',
-    })
+      dataError: ddValid && mmValid && yyyyValid && dateValid ? null : 'Invalid date',
+    });
 
     if (ddValid && mmValid && yyyyValid && dateValid) {
       this.props.nextStep();
-      this.props.updateUser({birthday: +date, gender, from});
+      this.props.updateUser({ birthday: +date, gender, from });
     }
-  }
+  };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="main second-page">
-          <DateField error={this.state.dataError}/>
-          <GenderSelect onChange={this.handleGenderChange} selected={this.state.gender}/>
+          <DateField error={this.state.dataError} />
+          <GenderSelect onChange={this.handleGenderChange} selected={this.state.gender} />
           <Dropdown
             options={[
-              {label: '', value: '' },
-              {label: 'Option 1', value: 'Option 1' },
-              {label: 'Option 2', value: 'Option 2' },
-              {label: 'Option 3', value: 'Option 3' },
-              {label: 'Option 4', value: 'Option 4' },
-              {label: 'Option 5', value: 'Option 5' },
-              {label: 'Option 6', value: 'Option 6' },
-              {label: 'Option 7', value: 'Option 7' },
+              { label: '', value: '' },
+              { label: 'Option 1', value: 'Option 1' },
+              { label: 'Option 2', value: 'Option 2' },
+              { label: 'Option 3', value: 'Option 3' },
+              { label: 'Option 4', value: 'Option 4' },
+              { label: 'Option 5', value: 'Option 5' },
+              { label: 'Option 6', value: 'Option 6' },
+              { label: 'Option 7', value: 'Option 7' },
             ]}
-            onChange = {this.handleFromChange}
+            onChange={this.handleFromChange}
           />
         </div>
         <div className="footer">
@@ -101,5 +99,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(StepTwo);
-
-
