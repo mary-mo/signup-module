@@ -14,8 +14,6 @@ body {
 
 .app {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .step-field {
@@ -25,6 +23,7 @@ body {
   box-sizing: border-box;
   border: 1px solid #eee;
   border-radius: 6px;
+  margin: auto;
 }
 
 .header {
@@ -125,6 +124,7 @@ body {
   background: transparent;
   text-transform: uppercase;
   font-size: 12px;
+  box-sizing: border-box;
 }
 
 .g-selected {

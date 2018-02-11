@@ -7,7 +7,7 @@ class GenderSelect extends Component {
 
   render() {
     return (
-      <label className="g-btn-container">
+      <div className="g-btn-container">
         Gender
         <div>
           <button
@@ -37,7 +37,7 @@ class GenderSelect extends Component {
             Unspecified
           </button>
         </div>
-      </label>
+      </div>
     );
   }
 }

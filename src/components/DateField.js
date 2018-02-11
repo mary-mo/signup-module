@@ -31,7 +31,7 @@ class DateField extends Component {
 
   render() {
     return (
-      <label>
+      <div>
         Date of birth
         <div className="datefield-container">
           <input
@@ -61,7 +61,7 @@ class DateField extends Component {
             </p>
           )}
         </div>
-      </label>
+      </div>
     );
   }
 }
