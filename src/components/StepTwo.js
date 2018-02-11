@@ -12,6 +12,7 @@ class StepTwo extends Component {
     dataError: null,
     gender: 'male',
     from: '',
+    birthday: null,
   };
 
   handleGenderChange = gender => {
@@ -24,34 +25,24 @@ class StepTwo extends Component {
     });
   };
 
+  handleDateChange = d => {
+    this.setState({
+      birthday: d,
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
-    const { gender, from } = this.state;
-
-    const elements = e.target.elements;
-    const dd = +elements[0].value;
-    const mm = +elements[1].value;
-    const yyyy = +elements[2].value;
-
-    const ddValid = dd >= 1 && dd <= 31;
-    const mmValid = mm >= 1 && mm <= 12;
-    const yyyyValid = !isNaN(yyyy) && yyyy > 1899 && yyyy < 10000;
-
-    const date = new Date(yyyy, mm - 1, dd);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    const dateValid = day === dd && month === mm && year === yyyy;
+    const { gender, from, birthday } = this.state;
 
     this.setState({
-      dataError: ddValid && mmValid && yyyyValid && dateValid ? null : 'Invalid date',
+      dataError: birthday ? null : 'Invalid date',
     });
 
-    if (ddValid && mmValid && yyyyValid && dateValid) {
+    if (birthday) {
       this.props.nextStep();
-      this.props.updateUser({ birthday: +date, gender, from });
+      this.props.updateUser({ birthday: +birthday, gender, from });
     }
   };
 
@@ -59,7 +50,11 @@ class StepTwo extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="main second-page">
-          <DateField error={this.state.dataError} />
+          <DateField
+            error={this.state.dataError}
+            date={this.state.birthday}
+            onChange={this.handleDateChange}
+          />
           <GenderSelect onChange={this.handleGenderChange} selected={this.state.gender} />
           <Dropdown
             options={[

@@ -4,19 +4,19 @@ export const UPDATE_USER = 'UPDATE_USER';
 
 export const nextStep = () => {
   return {
-    type: NEXT_STEP
-  }
+    type: NEXT_STEP,
+  };
 };
 
 export const previousStep = () => {
   return {
-    type: PREVIOUS_STEP
-  }
+    type: PREVIOUS_STEP,
+  };
 };
 
-export const updateUser = (user) => {
+export const updateUser = user => {
   return {
     type: UPDATE_USER,
-    user
-  }
+    user,
+  };
 };

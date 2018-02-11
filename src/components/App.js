@@ -22,7 +22,7 @@ class App extends Component {
             <p>{step.title}</p>
           </div>
           <ProgressBar progress={step.progress} />
-          <step.component/>
+          <step.component />
         </div>
       </div>
     );

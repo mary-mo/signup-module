@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 class GenderSelect extends Component {
-
-  handleGenderClick = (e) => {
-    this.props.onChange(e.target.name)
-  }
-
+  handleGenderClick = e => {
+    this.props.onChange(e.target.name);
+  };
 
   render() {
     return (
@@ -30,7 +28,9 @@ class GenderSelect extends Component {
           </button>
           <button
             type="button"
-            className={`genderbtn g-unspecified ${this.props.selected === 'unspecified' ? 'g-selected' : ''}`}
+            className={`genderbtn g-unspecified ${
+              this.props.selected === 'unspecified' ? 'g-selected' : ''
+            }`}
             name="unspecified"
             onClick={this.handleGenderClick}
           >

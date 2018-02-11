@@ -91,7 +91,7 @@ body {
   padding: 35px 20px 60px;
 }
 
-.third-page{
+.third-page {
   text-align: center;
   min-height: 259px;
   display: flex;
@@ -111,7 +111,7 @@ body {
   color: #d3d3d3;
 }
 
-.g-btn-container{
+.g-btn-container {
   padding-top: 30px;
 }
 
@@ -149,7 +149,7 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
-.dropdown-container{
+.dropdown-container {
   padding-top: 30px;
 }
 
@@ -160,12 +160,12 @@ body {
   color: #495057d7;
   border: 1px solid #eee;
   border-radius: 5px;
-  appearance:none;
+  appearance: none;
   background: url(downarrow.png) no-repeat 98% #fff;
 }
 
-.fa-check-circle{
-  color: #5FBA7D;
+.fa-check-circle {
+  color: #5fba7d;
   font-size: 12em;
 }
 
@@ -174,7 +174,7 @@ body {
   border-radius: 5px;
 }
 
-.error-message{
+.error-message {
   color: red;
   text-transform: capitalize;
   font-size: 12px;

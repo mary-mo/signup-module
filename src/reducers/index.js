@@ -1,8 +1,4 @@
-import {
-  NEXT_STEP,
-  PREVIOUS_STEP,
-  UPDATE_USER
-} from '../actions';
+import { NEXT_STEP, PREVIOUS_STEP, UPDATE_USER } from '../actions';
 
 const initialState = {
   step: 0,
@@ -10,7 +6,7 @@ const initialState = {
     email: '',
     password: '',
     birthday: null,
-    gender: 0,
+    gender: 'male',
     from: null,
   },
 };
@@ -18,21 +14,21 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case NEXT_STEP:
-      return{
+      return {
         ...state,
         step: state.step + 1,
       };
     case PREVIOUS_STEP:
-      return{
+      return {
         ...state,
         step: state.step - 1,
-    };
+      };
     case UPDATE_USER:
-      return{
+      return {
         ...state,
-        user: {...state.user, ...action.user},
+        user: { ...state.user, ...action.user },
       };
     default:
       return state;
   }
-}
+};
