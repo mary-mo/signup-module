@@ -36,11 +36,33 @@ class StepTwo extends Component {
 
     const { gender, from, birthday } = this.state;
 
-    this.setState({
-      dataError: birthday ? null : 'Invalid date',
-    });
 
+    let ageError = false;
     if (birthday) {
+
+      const today = new Date();
+      let age = today.getFullYear() - birthday.getFullYear()
+
+      if (today.getMonth() < birthday.getMonth() ||
+        (today.getMonth() === birthday.getMonth() &&
+          today.getDate() < birthday.getDate())) {
+        age--;
+      }
+
+      if (age < 18) {
+        ageError = true;
+        this.setState({
+          dataError: ageError ? 'Your Age Must Be More Than 18 Years!' : null,
+        })
+      }
+    } else {
+      this.setState({
+        dataError: 'Invalid date'
+      })
+    }
+
+
+    if (birthday && !ageError) {
       this.props.nextStep();
       this.props.updateUser({ birthday: +birthday, gender, from });
     }
@@ -52,7 +74,6 @@ class StepTwo extends Component {
         <div className="main second-page">
           <DateField
             error={this.state.dataError}
-            date={this.state.birthday}
             onChange={this.handleDateChange}
           />
           <GenderSelect onChange={this.handleGenderChange} selected={this.state.gender} />
